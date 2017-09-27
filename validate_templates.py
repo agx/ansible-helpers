@@ -18,6 +18,8 @@
 
 """Validate Jinja2 templates"""
 
+from __future__ import print_function
+
 import os
 import sys
 import jinja2
@@ -77,7 +79,7 @@ def main():
         errors += check_tree(tree, lambda x: '.svn' in x or x.rsplit('/')[-1].startswith('.'))
 
     for err in errors:
-        print >>sys.stderr, "%s" % err
+        print("%s" % err, file=sys.stderr)
 
     return False if errors else True
 

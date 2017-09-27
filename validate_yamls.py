@@ -16,6 +16,8 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from __future__ import print_function
+
 import os
 import yaml
 import sys
@@ -57,7 +59,7 @@ def main():
         errors += check_tree(tree, lambda x: '.svn' in x)
 
     for err in errors:
-        print >>sys.stderr, "Error: %s: %s" % (err.mark, err.problem)
+        print("Error: %s: %s" % (err.mark, err.problem), file=sys.stderr)
 
     return False if errors else True
 
